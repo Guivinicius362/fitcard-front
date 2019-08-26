@@ -3,6 +3,7 @@ import { message as Dialog } from 'antd';
 const initialState = {
 	establishments: [],
 	loading: false,
+	modalIsVisible: false,
 };
 
 export default function(state = initialState, action) {
@@ -14,6 +15,19 @@ export default function(state = initialState, action) {
 					loading: true,
 				};
 			}
+			case constants.OPEN_MODAL: {
+				return {
+					...state,
+					modalIsVisible: true,
+				};
+			}
+			case constants.CLOSE_MODAL: {
+				return {
+					...state,
+					modalIsVisible: false,
+				};
+			}
+
 			case constants.GET_ESTABLISHMENT: {
 				return {
 					...state,

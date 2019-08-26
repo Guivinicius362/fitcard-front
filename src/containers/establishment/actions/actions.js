@@ -6,6 +6,16 @@ export const loading = () => {
 		type: constants.LOADING,
 	};
 };
+export const changeStatusModal = () => {
+	return {
+		type: constants.OPEN_MODAL,
+	};
+};
+export const closeModal = () => {
+	return {
+		type: constants.CLOSE_MODAL,
+	};
+};
 export const getEstablishment = () => async dispatch => {
 	const url = constants.URL_ESTABLISHMENT;
 

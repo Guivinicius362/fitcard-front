@@ -99,6 +99,7 @@ class ModalContainer extends Component {
 			currEstablishment,
 			postEstablishment,
 			putEstablishment,
+			closeModal,
 		} = this.props;
 		const { cnpj, phone, agency, account, email } = this.state;
 		const body = {
@@ -109,9 +110,11 @@ class ModalContainer extends Component {
 			account: account && account.replace(/[^\d]+/g, ''),
 			email: email ? email : undefined,
 		};
-		currEstablishment ? putEstablishment(body) : postEstablishment(body);
+		currEstablishment
+			? putEstablishment(body).then(closeModal)
+			: postEstablishment(body).then(closeModal);
 	};
-
+	handleWithResponse = response => {};
 	render = () => {
 		return (
 			<form id="establishmentForm" onSubmit={this.onSubmit}>

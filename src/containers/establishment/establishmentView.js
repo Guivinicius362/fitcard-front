@@ -127,7 +127,11 @@ const columns = (openModal, deleteEstablishment) => [
 
 const menu = (openModal, record, deleteEstablishment) => (
 	<Menu>
-		<Menu.Item onClick={() => openModal('Edit', record)}>
+		<Menu.Item
+			onClick={() => {
+				openModal('Edit', record);
+			}}
+		>
 			<Icon type="user" />
 			Editar
 		</Menu.Item>
@@ -181,7 +185,7 @@ const EstablishmentView = ({
 				style={{ marginTop: 10 }}
 			/>
 			<Modal
-				title="Cadastrar Empresa"
+				title={type === 'Create' ? 'Cadastrar Empresa' : 'Editar Empresa'}
 				visible={modalIsVisible}
 				onCancel={closeModal}
 				width={840}
@@ -193,7 +197,7 @@ const EstablishmentView = ({
 						key="submit"
 						htmlType="submit"
 					>
-						Cadastrar
+						{type === 'Create' ? 'Cadastrar' : 'Salvar'}
 					</Button>,
 				]}
 				destroyOnClose={true}

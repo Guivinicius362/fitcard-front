@@ -4,7 +4,6 @@ import { Spin } from 'antd';
 
 export class EstablishmentController extends Component {
 	state = {
-		modalIsVisible: false,
 		currEstablishment: undefined,
 		type: 'Create',
 	};
@@ -16,20 +15,32 @@ export class EstablishmentController extends Component {
 	};
 
 	openModal = (type, currEstablishment = undefined) => {
-		this.setState({ modalIsVisible: true, type, currEstablishment });
+		const { changeStatusModal } = this.props;
+
+		this.setState({ type, currEstablishment }, () => {
+			changeStatusModal();
+		});
 	};
 
 	closeModal = () => {
-		this.setState({ modalIsVisible: false, currEstablishment: undefined });
+		const { closeModal } = this.props;
+		this.setState({ currEstablishment: undefined }, () => {
+			closeModal();
+		});
 	};
 
 	render = () => {
 		const { establishment } = this.props;
-		const { loading } = establishment;
+		const { loading, modalIsVisible } = establishment;
 		return (
 			<>
 				{loading && <Spin tip="Loading..."></Spin>}
-				<EstablishmentView {...this.state} {...this} {...this.props} />
+				<EstablishmentView
+					{...this.state}
+					{...this}
+					{...this.props}
+					modalIsVisible={modalIsVisible}
+				/>
 			</>
 		);
 	};
