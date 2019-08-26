@@ -8,7 +8,6 @@ import {
 	Menu,
 	Dropdown,
 	Icon,
-	Input,
 	Typography,
 	PageHeader,
 } from 'antd';
@@ -135,7 +134,7 @@ const menu = (openModal, record, deleteEstablishment) => (
 			<Icon type="user" />
 			Editar
 		</Menu.Item>
-		<Menu.Item onClick={() => deleteEstablishment(record)}>
+		<Menu.Item id="teste" onClick={() => deleteEstablishment(record)}>
 			<Icon type="usergroup-delete" />
 			Deletar
 		</Menu.Item>
@@ -171,7 +170,11 @@ const EstablishmentView = ({
 				</Row>
 				<Row gutter={16}>
 					<Col span={2} style={{ display: 'flex', flexDirection: 'row' }}>
-						<Button type="primary" onClick={() => openModal('Create')}>
+						<Button
+							type="primary"
+							onClick={() => openModal('Create')}
+							id="btn-cadastrar"
+						>
 							<Icon type="user-add" />
 							Cadastrar
 						</Button>
@@ -190,12 +193,15 @@ const EstablishmentView = ({
 				onCancel={closeModal}
 				width={840}
 				footer={[
-					<Button onClick={() => closeModal()}>Cancelar</Button>,
+					<Button onClick={() => closeModal()} id="btn-close">
+						Cancelar
+					</Button>,
 					<Button
 						type="primary"
 						form="establishmentForm"
 						key="submit"
 						htmlType="submit"
+						id="btn-submit"
 					>
 						{type === 'Create' ? 'Cadastrar' : 'Salvar'}
 					</Button>,

@@ -5,7 +5,7 @@ import { Input, Row, Col, Divider, Select, Alert, DatePicker } from 'antd';
 import moment from 'moment';
 import 'moment/locale/pt-br';
 import InputMask from 'react-input-mask';
-import locale from 'antd/es/date-picker/locale/pt_BR';
+import { validarCNPJ } from '../utils';
 const mapStateToProps = state => {
 	return {
 		establishment: state.establishment,
@@ -13,56 +13,7 @@ const mapStateToProps = state => {
 };
 const { Option } = Select;
 
-const validarCNPJ = cnpj => {
-	cnpj = cnpj.replace(/[^\d]+/g, '');
-
-	if (cnpj == '') return false;
-
-	if (cnpj.length != 14) return false;
-
-	// Elimina CNPJs invalidos conhecidos
-	if (
-		cnpj == '00000000000000' ||
-		cnpj == '11111111111111' ||
-		cnpj == '22222222222222' ||
-		cnpj == '33333333333333' ||
-		cnpj == '44444444444444' ||
-		cnpj == '55555555555555' ||
-		cnpj == '66666666666666' ||
-		cnpj == '77777777777777' ||
-		cnpj == '88888888888888' ||
-		cnpj == '99999999999999'
-	)
-		return false;
-
-	// Valida DVs
-	let tamanho = cnpj.length - 2;
-	let numeros = cnpj.substring(0, tamanho);
-	let digitos = cnpj.substring(tamanho);
-	let soma = 0;
-	let pos = tamanho - 7;
-	let i;
-	for (i = tamanho; i >= 1; i--) {
-		soma += numeros.charAt(tamanho - i) * pos--;
-		if (pos < 2) pos = 9;
-	}
-	let resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-	if (resultado != digitos.charAt(0)) return false;
-
-	tamanho = tamanho + 1;
-	numeros = cnpj.substring(0, tamanho);
-	soma = 0;
-	pos = tamanho - 7;
-	for (i = tamanho; i >= 1; i--) {
-		soma += numeros.charAt(tamanho - i) * pos--;
-		if (pos < 2) pos = 9;
-	}
-	resultado = soma % 11 < 2 ? 0 : 11 - (soma % 11);
-	if (resultado != digitos.charAt(1)) return false;
-
-	return true;
-};
-class ModalContainer extends Component {
+export class ModalContainer extends Component {
 	state = {
 		status: true,
 		created_at: moment(),
@@ -139,6 +90,7 @@ class ModalContainer extends Component {
 							value={this.state.cnpj}
 							name="cnpj"
 							onChange={this.onChange}
+							id="cnpj"
 							onBlur={e => {
 								validarCNPJ(this.state.cnpj) === false &&
 									this.setState({ error: true });
@@ -195,10 +147,11 @@ class ModalContainer extends Component {
 						Data de Cadastro
 						<DatePicker
 							name="created_at"
+							placeholder="Selecione uma data"
 							onChange={value =>
 								this.onChange({ target: { value, name: 'created_at' } })
 							}
-							locale={locale}
+							id="created_at"
 							format={'DD/MM/YYYY'}
 							value={this.state.created_at}
 						/>
