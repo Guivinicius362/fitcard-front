@@ -21,11 +21,11 @@ class App extends Component {
 									title={
 										<span>
 											<Icon type="user" />
-											Estabelecimento
+											Home
 										</span>
 									}
 								>
-									<Menu.Item key="1">Antd</Menu.Item>
+									<Menu.Item key="1">Estabelecimento</Menu.Item>
 								</SubMenu>
 							</Menu>
 						</Sider>

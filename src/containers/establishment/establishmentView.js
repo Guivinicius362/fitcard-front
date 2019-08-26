@@ -126,7 +126,7 @@ const columns = (openModal, deleteEstablishment) => [
 		title: '',
 		dataIndex: '',
 		key: '',
-		fixed: 'right',
+
 		width: 100,
 		render: (text, record, index) => (
 			<Dropdown
