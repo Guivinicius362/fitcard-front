@@ -27,8 +27,8 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run tests`
+### `coverage`
 
-Gera a pasta coverage contendo as porcentagens de coverage de cada component
+![alt text](https://sdada.s3.amazonaws.com/coverage.png)
 
 # fitcard-front
