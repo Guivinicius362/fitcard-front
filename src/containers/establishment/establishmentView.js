@@ -19,16 +19,19 @@ const columns = (openModal, deleteEstablishment) => [
 		title: 'Razão Social',
 		dataIndex: 'corporate_name',
 		key: 'corporate_name',
+		width: 100,
 	},
 	{
 		title: 'Nome Fantasia',
 		dataIndex: 'fantasy_name',
 		key: 'fantasy_name',
+		width: 100,
 	},
 	{
 		title: 'CNPJ',
 		dataIndex: 'cnpj',
 		key: 'cnpj',
+		width: 100,
 		render: (text, record, index) => (
 			<div>{`${text &&
 				text.replace(
@@ -41,26 +44,31 @@ const columns = (openModal, deleteEstablishment) => [
 		title: 'E-mail',
 		dataIndex: 'email',
 		key: 'email',
+		width: 100,
 	},
 	{
 		title: 'Endereço',
 		dataIndex: 'address',
 		key: 'address',
+		width: 100,
 	},
 	{
 		title: 'Cidade',
 		dataIndex: 'city',
 		key: 'city',
+		width: 100,
 	},
 	{
 		title: 'Estado',
 		dataIndex: 'state',
 		key: 'state',
+		width: 100,
 	},
 	{
 		title: 'Telefone',
 		dataIndex: 'phone',
 		key: 'phone',
+		width: 100,
 		render: (text, record, index) => (
 			<div>{`${(text && text.replace(/(\d{2})(\d{9})/g, '($1) $2')) ||
 				''}`}</div>
@@ -70,6 +78,7 @@ const columns = (openModal, deleteEstablishment) => [
 		title: 'Data de Cadastro',
 		dataIndex: 'created_at',
 		key: 'created_at',
+		width: 100,
 		render: (text, record, index) => (
 			<div>{`${(text && moment(text).format('DD/MM/YYYY')) || ''}`}</div>
 		),
@@ -78,11 +87,13 @@ const columns = (openModal, deleteEstablishment) => [
 		title: 'Categoria',
 		dataIndex: 'category',
 		key: 'category',
+		width: 100,
 	},
 	{
 		title: 'Status',
 		dataIndex: 'status',
 		key: 'status',
+		width: 100,
 		render: (text, record, index) => (
 			<div>{record.status ? 'Ativo' : 'Inativo'}</div>
 		),
@@ -91,6 +102,7 @@ const columns = (openModal, deleteEstablishment) => [
 		title: 'Agência',
 		dataIndex: 'agencyAccount',
 		key: 'agency',
+		width: 100,
 		render: (text, record, index) => (
 			<div>{`${(record.agency &&
 				record.agency.replace(/(\d{3})(\d{1})/g, '$1-$2')) ||
@@ -101,6 +113,7 @@ const columns = (openModal, deleteEstablishment) => [
 		title: 'Conta',
 		dataIndex: 'agencyAccount',
 		key: 'account',
+		width: 100,
 		render: (text, record, index) => (
 			<div>
 				{`${(record.account &&
@@ -113,6 +126,8 @@ const columns = (openModal, deleteEstablishment) => [
 		title: '',
 		dataIndex: '',
 		key: '',
+		fixed: 'right',
+		width: 100,
 		render: (text, record, index) => (
 			<Dropdown
 				overlay={menu(openModal, record, deleteEstablishment)}
@@ -186,6 +201,7 @@ const EstablishmentView = ({
 				dataSource={establishment.establishments}
 				columns={columns(openModal, deleteEstablishment)}
 				style={{ marginTop: 10 }}
+				scroll={{ x: 1500, y: 300 }}
 			/>
 			<Modal
 				title={type === 'Create' ? 'Cadastrar Empresa' : 'Editar Empresa'}
