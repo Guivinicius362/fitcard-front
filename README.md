@@ -1,3 +1,9 @@
+# fitcard-front
+
+### `coverage`
+
+![alt text](https://sdada.s3.amazonaws.com/coverage.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -26,9 +32,3 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `coverage`
-
-![alt text](https://sdada.s3.amazonaws.com/coverage.png)
-
-# fitcard-front
