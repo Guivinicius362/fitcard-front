@@ -1,13 +1,42 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+.ant-row {
+	margin-bottom: 16px !important;
+}
+.ant-calendar-picker {
+	width: 100% !important;
+}
+.ant-spin-dot-item {
+	width: 25px !important;
+	height: 25px !important;
+}
+.ant-spin-dot {
+	width: 100% !important;
+	height: 100% !important;
+}
+.ant-spin-spinning {
+	position: absolute !important;
+	z-index: 1200 !important;
+	left: 50% !important;
+	right: 50% !important;
+	top: 40vh !important;
+}
+.ant-spin {
+	width: 80px !important;
+	height: 80px !important;
+}
+.ant-page-header {
+	padding: unset !important;
 }
